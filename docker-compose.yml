@@ -19,7 +19,7 @@ services:
   
   api:
     container_name: api_app
-    build: ./api
+    build: .
     ports:
         - 4300:4300
     restart: on-failure
