@@ -7,7 +7,8 @@ import psycopg2
 
 @contextmanager
 def get_db_connection():
-    with psycopg2.connect(settings.postgres_dsn) as connection:
+    with psycopg2.connect(host=settings.postgres_host, database=settings.postgres_db,
+                           user=settings.postgres_user, password=settings.postgres_password) as connection:
         yield connection
 
 
