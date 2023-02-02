@@ -1,26 +1,20 @@
 from pydantic import BaseSettings, PostgresDsn
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
-
 
 class Settings(BaseSettings):
+
+    # postgres_user: str
+    # postgres_password: str
+    # postgres_db: str
+    # postgres_host: str
+    # postgres_port: int
+
     postgres_dsn: PostgresDsn
 
-    # This part sets up the mapping between the variable name and the environment variable.
-    # In this example, the value of postgres_dsn will be pulled from the environment variable "POSTGRES_DSN"
-    #
-    # This makes it easy to change the database we connect to by simply changing the environment variable
-    # and restarting our application.
     class Config:
-
-        env_file = "../../.env"
-        # fields = {
-        #     'postgres_dsn': {
-        #         'env': 'POSTGRES_DSN'  # 'postgres://<user>:<pass>@<host>>:<port>>/<dbname>'
-        #     }
-        # }
+        env_file = ".env"
+        env_file_encoding = "utf-8"
 
 
 settings = Settings()
+
+print(settings.postgres_dsn)
